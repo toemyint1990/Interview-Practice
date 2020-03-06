@@ -53,4 +53,22 @@ class MainTest {
     void reverseString () {
         Main.reverseString("ToeMyint");
     }
+
+    @Test
+    void factorial() {
+        int i = Main.factorial(4);
+        assertEquals(24, i);
+    }
+
+    @Test
+    void stupidCounter() {
+        int[] test = Main.stupidCounter(5, new int[]{3,4,4,6,1,4,4} );
+        assertEquals(test.length,5);
+    }
+
+    @Test
+    void stupidCounter2() {
+        int[] test = Main.stupidCounter2(5, new int[]{3,4,4,6,1,4,4} );
+        assertEquals(test.length,5);
+    }
 }

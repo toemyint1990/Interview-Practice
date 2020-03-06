@@ -88,6 +88,52 @@ public class Main {
         return st;
     }
 
+    public static int factorial (int n) {
+        if (n == 1) return 1;
+        else if (n == 2) return 2;
+        else
+            return n * factorial(n-1);
+    }
 
+    public static int[] stupidCounter (int N, int[] arr) {
+        int [] counters = new int[N];
+        Arrays.fill(counters, 0);
+
+        for (int i = 0; i < arr.length; i++) {
+            if ( arr[i] <= N ) {
+                counters[ arr[i] - 1 ] += 1;
+            } else if ( arr[i] == N + 1 ) {
+                List<Integer> counterList =
+                        Arrays.stream(counters).boxed().collect(Collectors.toList());
+                Integer max =
+                        counterList.stream().sorted(Collections.reverseOrder()).findFirst().orElse(0);
+                Arrays.fill(counters, max);
+            }
+        }
+
+        return counters;
+    }
+
+    public static int[] stupidCounter2 (int N, int[] A) {
+        int[] counterArray = new int[N];
+        final int[] zeroedArray = new int[N];
+        int biggestCounter = 0;
+        int maxCounter = 0;
+
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] <= N) {
+                counterArray[A[i] - 1]++;
+                if (counterArray[A[i] - 1] + maxCounter > biggestCounter)
+                    biggestCounter = counterArray[A[i] - 1] + maxCounter;
+
+            } else if (A[i] == N + 1) {
+                maxCounter = biggestCounter;
+                System.arraycopy(zeroedArray, 0, counterArray, 0, zeroedArray.length);
+            }
+        }
+        for (int j = 0; j < counterArray.length; j++)
+            counterArray[j] += maxCounter;
+        return counterArray;
+    }
 
 }
