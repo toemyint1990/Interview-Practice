@@ -71,4 +71,18 @@ class MainTest {
         int[] test = Main.stupidCounter2(5, new int[]{3,4,4,6,1,4,4} );
         assertEquals(test.length,5);
     }
+
+    @Test
+    void totalNumberOfDays() {
+        int days = Main.totalNumberOfDays(5,1,6);
+        assertEquals(days,2);
+    }
+
+    @Test
+    void maxNumberOfWords() {
+        int max = Main.maxNumberOfWords("We test coders. Give us a try? ");
+        int max1 = Main.maxNumberOfWords("Forget CVs..Save time . x x");
+        assertEquals(max,4);
+        assertEquals(max1,2);
+    }
 }

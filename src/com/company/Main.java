@@ -136,4 +136,31 @@ public class Main {
         return counterArray;
     }
 
+    public static int totalNumberOfDays (int upclimb ,int downclimb, int totalStairs) {
+        int days = 0;
+        int stepsPerDay = 0;
+
+        int daysWithoutLoop = 1 + totalStairs/(upclimb-downclimb);
+
+        while (stepsPerDay < totalStairs) {
+            stepsPerDay += (upclimb - downclimb);
+            days ++;
+        }
+
+        return days;
+    }
+
+    public static int maxNumberOfWords (String s) {
+        int max = 0;
+        String[] sentences = s.split("[.?!]");
+        for (String sentence : sentences) {
+            String[] words = sentence.trim().split("\\s");
+            if (words.length > max) max = words.length;
+        }
+        return max;
+    }
+
+
+
+
 }
